@@ -1,0 +1,12 @@
+<h1>{{question.question_text}}</h1>
+<form action="{% url 'polls:vote' question.id %}" method="post">
+  {% csrf_token %}
+  {% for choice in question.choice_set.all %}
+    <label>
+      <!-- name 속성은 같은 이름(예: choices)을 사용하여 여러 값을 받아오게 함 -->
+      <input type="checkbox" name="choices" value="{{ choice.id }}">
+      {{ choice.choice_text }}
+    </label><br>
+  {% endfor %}
+  <input type="submit" value="풀어주세요">
+</form>

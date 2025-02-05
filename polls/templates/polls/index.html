@@ -1,0 +1,10 @@
+<h1>아래 링크를 클릭해 수업에서 다루고 싶은 문제에 투표!</h1>
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
